@@ -1,2 +1,2 @@
-# TwittMap-Sentiment
+# TwittMap
 
