@@ -41,7 +41,7 @@ app.post('/', function (req, res) {
     }
 });
 
-server.listen(1234);
+server.listen(80);
 
 io.on('connection', function (socket) {
     socket.on('clicked', function (data) {
