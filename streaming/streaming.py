@@ -4,15 +4,14 @@ from codecs import open
 from dateutil import parser
 import tweepy
 import boto3
-#from tokens import consumer_key, consumer_secret, access_token, access_token_secret
 
 sqs = boto3.resource('sqs')
 queue = sqs.get_queue_by_name(QueueName='TwittMap')
 
-consumer_key ='d8geUgymX4gBOfbnHUmTHyiXS'
-consumer_secret ='hh2S2X4acmjemt0OIt7i0b1Al8GINPD0bcXCkvtaAVPcVjHpT6'
-access_token ='4902196372-kTu4kg2QGiIuq9oOW9gI9JkYJQQfA2favp2z0aF'
-access_token_secret ='zlvsAXgyp8hGoKOTWGvOlIWriUhbqcOuO9xIzTSIQvWfp'
+consumer_key ='***************************'
+consumer_secret ='***************************'
+access_token ='***************************'
+access_token_secret ='***************************'
 
 def appendlog(f, s):
     f.write(u'[{0}] {1}\n'.format(time.strftime('%Y-%m-%dT%H:%M:%SZ'), s))
@@ -26,7 +25,6 @@ class TwittMapListener(tweepy.StreamListener):
 
     def on_data(self, data):
         try:
-            # Reference: https://dev.twitter.com/overview/api/tweets
             decoded = json.loads(data)
             if decoded.get('lang') == 'en' and decoded.get('coordinates') is not None:
                 geo = decoded['coordinates']['coordinates']
