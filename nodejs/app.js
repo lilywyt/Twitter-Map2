@@ -4,7 +4,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var es = require('elasticsearch');
-var endpoint = 'https://search-twittmap-r3fn3cwbwjg76iigslovqojqbi.us-west-2.es.amazonaws.com';
+var endpoint = 'your elasticsearch endpoint';
 var client = new es.Client({host: endpoint});
 
 var bodyParser = require('body-parser');
@@ -21,7 +21,6 @@ app.post('/', function (req, res) {
     res.status(200).end();
     var type = req.get('x-amz-sns-message-type');
     if (type === 'SubscriptionConfirmation') {
-    	console.log("ahahahahhahahahahahhahahhahahahahhahahahahahahahahhahahahhhahahahaahhaahahahah");
         var url = req.body.SubscribeURL;
         console.log(url);
         request(url, function (error, response, body) {
